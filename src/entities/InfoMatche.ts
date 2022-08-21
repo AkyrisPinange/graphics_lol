@@ -1,17 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryColumn, Column,ManyToOne, JoinColumn } from "typeorm";
+import { Sumonner } from './Sumonner';
 
 @Entity()
-export class DataMatch {
-    
-    @PrimaryGeneratedColumn()
-    id: string;
+export class InfoMatche{
 
-    @Column()
+    @PrimaryColumn()
     idjogo: string;
-    @Column()
+
+    @Column({type: "date",})
     datacriacaodojogo: Date;
     
-    @Column()
+    @Column({type: "time",})
     duracaodojogo: Date;
     
     @Column()
@@ -137,7 +136,7 @@ export class DataMatch {
     @Column()
     danofisicocausadocampeoes: string;
 
-    @Column()
+    @PrimaryColumn()
     puuid: string;
 
     @Column()
@@ -207,8 +206,7 @@ export class DataMatch {
     vitoria: string;
 
     @Column()
-
-    @Column()
     fila: string;
+
 
 }
