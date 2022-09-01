@@ -1,4 +1,3 @@
-import { Interface } from "readline";
 import { AppDataSource } from "../data-source";
 import { InfoMatche } from '../entities/InfoMatche';
 

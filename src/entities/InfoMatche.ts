@@ -1,5 +1,4 @@
 import { Entity, PrimaryColumn, Column,ManyToOne, JoinColumn } from "typeorm";
-import { Sumonner } from './Sumonner';
 
 @Entity()
 export class InfoMatche{
@@ -10,8 +9,8 @@ export class InfoMatche{
     @Column({type: "date",})
     datacriacaodojogo: Date;
     
-    @Column({type: "time",})
-    duracaodojogo: Date;
+    @Column()
+    duracaodojogo: number;
     
     @Column()
     assistencias: string;
@@ -155,6 +154,9 @@ export class InfoMatche{
     nomeinvocador: string;
 
     @Column()
+    desistenciadotime: string;
+
+    @Column()
     tempoccoutros: string;
 
     @Column()
@@ -179,7 +181,7 @@ export class InfoMatche{
     totalcccausado: string;
 
     @Column()
-    totaltempomorto: string;
+    totaltempomorto: number;
 
     @Column()
     triplekills: string;
@@ -201,6 +203,9 @@ export class InfoMatche{
 
     @Column()
     wardscolocadas: string;
+
+    @Column()
+    wardskilled: string;
 
     @Column()
     vitoria: string;

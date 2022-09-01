@@ -6,7 +6,8 @@ import GetMatcheByPuuidController from './controllers/GetMatcheByPuuidController
 const routes = Router();
 
 routes.post('/sumonner', new SumonnerController().create)
-routes.post('/infoMatch', new InfoMatchController().create)
+routes.post('/infoMatchCreate', new InfoMatchController().create)
+// routes.post('/infoMatchList', new InfoMatchController().List)
 routes.post('/getMatchBypuuid', new GetMatcheByPuuidController().List)
 
 
