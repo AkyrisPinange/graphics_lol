@@ -13,8 +13,9 @@ AppDataSource.initialize().then(() => {
 
     app.use(routes);
 
-    app.get('/', (req, res) => {
+    app.get('/api/', (req, res) => {
         return res.json("Tudo Certo!");
+      
     })
 
     return app.listen(process.env.PORT);

@@ -10,6 +10,7 @@ const routes = Router();
 routes.post('/sumonnerSave', new SumonnerController().create)
 routes.put('/sumonnerUpdate', new SumonnerController().update)
 routes.get('/sumonnerList', new SumonnerController().list)
+routes.post('/api/sumonnerApi',  new SumonnerController().getSumonner)
 /**************************************************************/
 
 routes.post('/infoMatchCreate', new InfoMatchController().create)

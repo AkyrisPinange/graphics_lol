@@ -178,8 +178,8 @@ export default class InfoMatchController {
   };
 
   getInfoMatch = async (matche: string) => {
-    const response = await fetch(
-      `${process.env.URL}/match/v5/matches/${matche}?api_key=${process.env.TOKEN}`,
+    return  await fetch(
+      `${process.env.URL}/summoner/v4/summoners/by-name/${matche}?api_key=${process.env.TOKEN}`,
       {
         method: "get",
         headers: {
@@ -189,7 +189,7 @@ export default class InfoMatchController {
       }
     );
 
-    return await response.json();
+     
   };
 
 

@@ -3,8 +3,9 @@ import { sumonnerRepository } from "../repositories/SumonnerRepository";
 import { AppDataSource } from "../data-source";
 import { Sumonner } from "../entities/Sumonner";
 import { ILike } from "typeorm";
-
+import fetch from "node-fetch";
 export default class SumonnerController {
+
   async create(req: Request, res: Response) {
     const { puuid, name } = req.body;
 
@@ -34,6 +35,7 @@ export default class SumonnerController {
       return res.status(500).json({ error });
     }
   }
+
   async update(req: Request, res: Response) {
     const { puuid, name } = req.body;
 
@@ -53,8 +55,9 @@ export default class SumonnerController {
       .where("puuid = :puuid", { puuid: puuid })
       .execute();
 
-    return res.status(201).json("Atualiza Com sucesso!");
+    return res.status(201).json("Atualizado Com sucesso!");
   }
+
   async list(req: Request, res: Response) {
     const { name } = req.body;
 
@@ -63,4 +66,35 @@ export default class SumonnerController {
     })
     return res.status(200).json(sumonners);
   }
+
+  getSumonner = async (req: Request, res: Response) => {
+    const { name } = req.body;
+   
+      const result = await this.getSumonnerApi(name);
+    
+      if( result?.status?.status_code == 404){
+        
+        res.status(200).json("Invocador não existe!")
+
+      }
+       
+      return res.status(200).json(result);
+  }
+
+  getSumonnerApi = async (name:String) => {
+    
+    const response =  await fetch(
+      `${process.env.URLBR1}/summoner/v4/summoners/by-name/${name}?api_key=${process.env.TOKEN}`,
+      {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+        },
+      }
+    );
+    return response.json();
+  }
+
 }
+
